@@ -10,6 +10,13 @@ import { AppointmentListComponent } from './appointments/appointment-list/appoin
 import { ProductionListComponent } from './production/production-list/production-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CxcComponent } from './accounting/cxc/cxc.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterComponent } from './footer/footer.component';
+
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,11 +27,17 @@ import { CxcComponent } from './accounting/cxc/cxc.component';
     AppointmentListComponent,
     ProductionListComponent,
     DashboardComponent,
-    CxcComponent
+    CxcComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

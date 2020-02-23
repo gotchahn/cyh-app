@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  hide = true;
+  username: string;
+  password: string;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onLoginClick(){
+    console.log(this.username + " - " + this.password);
   }
 
 }
