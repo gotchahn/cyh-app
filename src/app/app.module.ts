@@ -9,6 +9,7 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { AppointmentListComponent } from './appointments/appointment-list/appointment-list.component';
 import { ProductionListComponent } from './production/production-list/production-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CxcComponent } from './accounting/cxc/cxc.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     InventoryComponent,
     AppointmentListComponent,
     ProductionListComponent,
-    DashboardComponent
+    DashboardComponent,
+    CxcComponent
   ],
   imports: [
     BrowserModule,
