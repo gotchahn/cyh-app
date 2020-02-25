@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,10 @@ export class LoginComponent implements OnInit {
   hide = true;
   username: string;
   password: string;
-  success = true;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.success = true;
 
     // if logged in, go to home
   }
@@ -25,13 +24,21 @@ export class LoginComponent implements OnInit {
     console.log(this.username + " - " + this.password);
     this.authService.login(this.username, this.password);
 
-    if(this.authService.isAuthenticated()){
-      // good, let's go to home 
-      this.router.navigate(["/home"]);
-    }
-    else{
-      this.success = false;
-    }
+    this.authService.loggedIn.subscribe((isAuth: boolean) => {
+      if(isAuth){
+        // good, let's go to home 
+        this.router.navigate(["/home"]);
+      }
+      else{
+        
+        Swal.fire({
+          title: 'Error!',
+          text: 'Credenciales No Validas',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
+      }
+    });
   }
 
 }

@@ -2,10 +2,6 @@
 <hr>
 <h3>Credenciales</h3>
 
-<div class="alert alert-danger" role="alert" *ngIf="!success">
-    Credenciales no validas
-</div>
-
 <form (ngSubmit)="onLoginClick()" #formLogin="ngForm">
     <mat-form-field appearance="fill">
         <mat-label>Usuario</mat-label>
