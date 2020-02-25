@@ -16,6 +16,8 @@ import { FooterComponent } from './footer/footer.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './sessions/auth.service';
 
@@ -38,7 +40,8 @@ import { AuthService } from './sessions/auth.service';
     FormsModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
