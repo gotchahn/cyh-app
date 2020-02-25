@@ -2,7 +2,7 @@
 <hr>
 <h3>Credenciales</h3>
 
-<form (ngSubmit)="onLoginClick()" #formLogin="ngForm">
+<form (ngSubmit)="onLoginClick(formLogin)" #formLogin="ngForm">
     <mat-form-field appearance="fill">
         <mat-label>Usuario</mat-label>
         <input type="text" [(ngModel)]="username" name="username" matInput required>

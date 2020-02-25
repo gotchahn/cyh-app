@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   hide = true;
   username: string;
   password: string;
+  authSub: any;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -20,13 +23,14 @@ export class LoginComponent implements OnInit {
     // if logged in, go to home
   }
 
-  onLoginClick(){
+  onLoginClick(loginForm: NgForm){
     console.log(this.username + " - " + this.password);
     this.authService.login(this.username, this.password);
 
-    this.authService.loggedIn.subscribe((isAuth: boolean) => {
+    this.authSub = this.authService.loggedIn.subscribe((isAuth: boolean) => {
       if(isAuth){
         // good, let's go to home 
+        loginForm.reset();
         this.router.navigate(["/home"]);
       }
       else{
@@ -39,6 +43,10 @@ export class LoginComponent implements OnInit {
         })
       }
     });
+  }
+
+  ngOnDestroy(){
+    this.authSub.unsubscribe();
   }
 
 }
